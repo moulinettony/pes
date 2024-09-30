@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      dropShadow: {
+        'custom': '0 4px 3px rgba(0, 0, 0, 0.3)',
+      },
+      animation: {
+        'spin-slow': 'spin 1s linear infinite',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
