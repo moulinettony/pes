@@ -102,7 +102,7 @@ const Game: React.FC = () => {
         <h1 className="z-[1] text-3xl font-bold mb-8 text-white">Controls</h1>
         {/* Card Inputs */}
         {!animationComplete && (
-          <div className="z-[1] pl-8 pr-[17px] lg:pb-8 pb-10 w-full grid max-lg:grid-cols-2 gap-4 overflow-y-scroll">
+          <div className="z-[1] lg:order-2 pl-8 pr-[17px] lg:pb-8 pb-10 w-full grid max-lg:grid-cols-2 gap-4 overflow-y-scroll">
             {cards.map((card, index) => (
               <div key={index} className="w-full">
                 <input
@@ -110,14 +110,14 @@ const Game: React.FC = () => {
                   value={card}
                   onChange={(e) => handleChange(index, e.target.value)}
                   placeholder="Type here..."
-                  className="p-2 w-full text-black border border-black shadow-sm shadow-neutral-600 rounded-md bg-white"
+                  className="px-2 py-1 lg:text-sm w-full text-black border border-black shadow-sm shadow-neutral-600 rounded-md bg-white"
                 />
               </div>
             ))}
             {!animationComplete && !spinning && (
               <button
                 onClick={addCard}
-                className="px-4 py-2 text-sm font-semibold shadow shadow-neutral-500 bg-neutral-800 rounded-md hover:bg-neutral-900 w-full text-white"
+                className="px-4 py-1 text-sm font-semibold shadow shadow-neutral-500 bg-neutral-800 rounded-md hover:bg-neutral-900 w-full text-white"
               >
                 + Add
               </button>
@@ -145,7 +145,7 @@ const Game: React.FC = () => {
           {animationComplete && !spinning && (
             <button
               onClick={resetGame}
-              className="px-4 py-2 mb-2 font-bold rounded-md w-full bg-red-600 hover:bg-neutral-400 text-white"
+              className="px-4 py-2 mb-2 font-bold rounded-md w-full bg-red-600 hover:bg-red-800 text-white"
             >
               Repeat
             </button>
