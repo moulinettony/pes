@@ -30,13 +30,18 @@ const Game: React.FC = () => {
 
   // Function to reset the game and start a new spin
   const resetGame = () => {
-    setWinnerIndex(null);  // Reset the winner index to null
-    setSpinning(false);    // Reset the spinning state
-    setAnimationComplete(false);  // Reset animation state
-    setHighlightedIndex(0);  // Reset highlight
-    setIsSpinningStarted(false);  // Reset spinning started state
-    setShouldRotateWinner(false); // Reset winner card rotation
-    setShouldRotateAll(false);    // Reset all card rotations
+    console.log("resetGame called");
+    setWinnerIndex(null); // Reset the winner index to null
+
+    // Delay further state changes to ensure that winnerIndex is properly reset
+    setTimeout(() => {
+      setSpinning(false);
+      setAnimationComplete(false);
+      setHighlightedIndex(0);
+      setIsSpinningStarted(false);
+      setShouldRotateWinner(false);
+      setShouldRotateAll(false);
+    }, 100); // Small delay to ensure winnerIndex is reset first
   };
 
   // Function to spin through the cards by changing the highlighted index
@@ -44,32 +49,32 @@ const Game: React.FC = () => {
     if (containerRef.current) {
       containerRef.current.scrollIntoView({ behavior: "smooth" }); // Scroll to Cards Section smoothly
     }
-  
+
     setAnimationComplete(false);
     setWinnerIndex(null); // Reset winner
     setShouldRotateAll(true); // Rotate all the cards by 180 degrees before spinning
     setIsSpinningStarted(true); // Mark that the spin has started
-  
+
     const spinDuration = 3000; // How long the spin lasts (in ms)
     const spinInterval = 200; // Interval for moving the red shadow
-  
+
     // Start the interval to highlight different cards
     const interval = setInterval(() => {
       const randomIndex = Math.floor(Math.random() * cards.length); // Get a random card index
       setHighlightedIndex(randomIndex); // Set the highlighted index to the random index
     }, spinInterval);
-  
+
     setTimeout(() => {
       setIsSpinningStarted(false); // Disable yellow border after spin ends
       const randomIndex = Math.floor(Math.random() * cards.length);
       setSpinning(false);
       setHighlightedIndex(randomIndex); // Keep the border on the winner card
-  
+
       clearInterval(interval); // Stop the interval
-  
+
       setTimeout(() => {
         setAnimationComplete(true); // Mark the animation as complete
-  
+
         // Scroll back to the top smoothly with fallback for mobile devices
         setTimeout(() => {
           if ("scrollBehavior" in document.documentElement.style) {
@@ -80,7 +85,7 @@ const Game: React.FC = () => {
             document.documentElement.scrollIntoView({ behavior: "smooth" });
           }
         }, 100); // Delay to ensure layout is settled before scrolling
-  
+
         setWinnerIndex(randomIndex); // Set the winning card
         setShouldRotateAll(true); // Stop rotating all cards
         setShouldRotateWinner(true); // Rotate only the winner card back to its original state
@@ -106,7 +111,9 @@ const Game: React.FC = () => {
       {/* Right Sidebar (Input and Buttons) */}
       <div className="relative lg:w-1/4 pt-10 flex flex-col justify-start items-center bg-neutral-800 bg-[url('/wallp1.png')] bg-cover bg-right-top">
         <div className="absolute top-0 h-full w-full bg-black opacity-50"></div>
-        <h1 className="z-[1] text-4xl font-bold mb-8 text-white drop-shadow-[2px_2px_3px_black]">Picker Cards</h1>
+        <h1 className="z-[1] text-4xl font-bold mb-8 text-white drop-shadow-[2px_2px_3px_black]">
+          Picker Cards
+        </h1>
         <div className="px-8 lg:pb-4 mb-6 w-full z-[1]">
           {/* Spin Button (Hidden after spin completes) */}
           {!animationComplete && !spinning && (
@@ -194,12 +201,14 @@ const Game: React.FC = () => {
               </motion.div>
             ))}
             <button
-                onClick={addCard}
-                className="px-4 h-12 lg:h-48 py-2 lg:text-xs font-semibold drop-shadow-[2px_5px_6px_#00000044] shadow-[inset_0px_20px_20px_0px_#d8d9da] lg:drop-shadow-[4px_4px_10px_#00000044] lg:shadow-[inset_40px_20px_60px_0px_#d8d9da] bg-white lg:hover:bg-neutral-50 rounded-md w-full text-black flex items-center justify-center gap-2"
-              >
-                <p className="rounded-full border border-black h-5 w-5 flex items-center justify-center pt-[2px]">+</p>
-                <p className="text-sm">Add</p>
-              </button>
+              onClick={addCard}
+              className="px-4 h-12 lg:h-48 py-2 lg:text-xs font-semibold drop-shadow-[2px_5px_6px_#00000044] shadow-[inset_0px_20px_20px_0px_#d8d9da] lg:drop-shadow-[4px_4px_10px_#00000044] lg:shadow-[inset_40px_20px_60px_0px_#d8d9da] bg-white lg:hover:bg-neutral-50 rounded-md w-full text-black flex items-center justify-center gap-2"
+            >
+              <p className="rounded-full border border-black h-5 w-5 flex items-center justify-center pt-[2px]">
+                +
+              </p>
+              <p className="text-sm">Add</p>
+            </button>
           </div>
         </div>
       </div>
