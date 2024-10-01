@@ -5,7 +5,7 @@ import { motion } from "framer-motion"; // Import Framer Motion
 import Card from "./Card";
 
 const Game: React.FC = () => {
-  const [cards, setCards] = useState(["", "", ""]);
+  const [cards, setCards] = useState(["", ""]);
   const [winnerIndex, setWinnerIndex] = useState<number | null>(null);
   const [spinning, setSpinning] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
