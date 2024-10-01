@@ -128,7 +128,7 @@ const Game: React.FC = () => {
                   value={card}
                   onChange={(e) => handleChange(index, e.target.value)}
                   placeholder="Type here..."
-                  className="p-2 w-full text-black border border-black shadow-sm shadow-neutral-600 rounded-md text-sm bg-white"
+                  className="p-2 w-full text-black border border-black shadow-sm shadow-neutral-600 rounded-md bg-white"
                 />
               </div>
             ))}
