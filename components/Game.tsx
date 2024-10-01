@@ -128,7 +128,7 @@ const Game: React.FC = () => {
                   value={card}
                   onChange={(e) => handleChange(index, e.target.value)}
                   placeholder="Type here..."
-                  className="p-2 w-full border border-black shadow-sm shadow-neutral-600 rounded-md text-sm bg-white"
+                  className="p-2 w-full text-black border border-black shadow-sm shadow-neutral-600 rounded-md text-sm bg-white"
                 />
               </div>
             ))}
@@ -147,7 +147,7 @@ const Game: React.FC = () => {
       {/* Cards Section */}
       <div className="flex flex-col flex w-full items-center relative lg:py-10 py-6 lg:overflow-y-scroll">
         <div className="text-center">
-          <h1 className="lg:text-4xl text-xl font-bold lg:mb-10 mb-6">Cards</h1>
+          <h1 className="lg:text-4xl text-xl font-bold lg:mb-10 mb-6 text-black">Cards</h1>
           <div
             className="grid grid-cols-2 lg:grid-cols-3 gap-6 relative"
             ref={containerRef} // Reference to the container
