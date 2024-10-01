@@ -48,3 +48,13 @@ body {
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
+
+@media not all and (min-resolution: .001dpcm) { 
+  @supports (-webkit-appearance: none) {
+    .blurred {
+      filter: none;
+      opacity: 0.5; /* Alternative visual effect */
+      transform: scale(0.95); /* Simulate a blur-like effect */
+    }
+  }
+}

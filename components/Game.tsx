@@ -30,8 +30,13 @@ const Game: React.FC = () => {
 
   // Function to reset the game and start a new spin
   const resetGame = () => {
-    setShouldRotateAll(false);  // Rotate all the cards back before spinning
-    setWinnerIndex(null);  // Reset the winnerIndex to null
+    setWinnerIndex(null);  // Reset winnerIndex to null
+  
+    // Force reflow
+    if (containerRef.current) {
+      containerRef.current.offsetHeight; // Force a reflow
+    }
+  
     setSpinning(false);    // Reset spinning state
     setAnimationComplete(false);  // Reset animation state
     setHighlightedIndex(0);  // Reset highlighted index
@@ -154,10 +159,8 @@ const Game: React.FC = () => {
             {cards.map((card, index) => (
               <motion.div
                 key={index}
-                className={`flex flex-col items-center ${
-                  isSpinningStarted && highlightedIndex === index
-                    ? "rounded-xl"
-                    : ""
+                className={`flex flex-col items-center ${isSpinningStarted && highlightedIndex === index ? "rounded-xl" : ""} ${
+                  winnerIndex !== null && winnerIndex !== index ? "blurred" : ""
                 }`}
                 style={{
                   position:
