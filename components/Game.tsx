@@ -39,33 +39,43 @@ const Game: React.FC = () => {
     if (containerRef.current) {
       containerRef.current.scrollIntoView({ behavior: "smooth" }); // Scroll to Cards Section smoothly
     }
-
+  
     setAnimationComplete(false);
     setWinnerIndex(null); // Reset winner
     setIsSpinningStarted(true); // Mark that the spin has started
-
+  
     const spinDuration = 2000; // How long the spin lasts (in ms)
     const spinInterval = 200; // Interval for moving the yellow border
     let currentIndex = 0;
-
+  
     // Start the interval to highlight different cards
     const interval = setInterval(() => {
       setHighlightedIndex(currentIndex % cards.length);
       currentIndex++;
     }, spinInterval);
-
+  
     setTimeout(() => {
       setIsSpinningStarted(false); // Disable yellow border after spin ends
       const randomIndex = Math.floor(Math.random() * cards.length);
       setSpinning(false);
       setHighlightedIndex(randomIndex); // Keep the border on the winner card
-
+  
       clearInterval(interval); // Stop the interval
-
+  
       setTimeout(() => {
         setAnimationComplete(true); // Mark the animation as complete
-        // Scroll back to the top smoothly
-        window.scrollTo({ top: 0, behavior: "smooth" });
+  
+        // Scroll back to the top smoothly with fallback for mobile devices
+        setTimeout(() => {
+          if ('scrollBehavior' in document.documentElement.style) {
+            // Use smooth scrolling if supported
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          } else {
+            // Fallback for older browsers or devices
+            document.documentElement.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100); // Delay to ensure layout is settled before scrolling
+  
         setWinnerIndex(randomIndex);
       }, 1000); // Allow the animation to settle
     }, spinDuration); // Stop after the spin duration
