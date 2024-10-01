@@ -160,8 +160,6 @@ const Game: React.FC = () => {
                   isSpinningStarted && highlightedIndex === index
                     ? "rounded-xl"
                     : ""
-                } ${
-                  winnerIndex !== null && winnerIndex !== index ? "blurred" : ""
                 }`}
                 style={{
                   position:
@@ -171,11 +169,13 @@ const Game: React.FC = () => {
                   width: winnerIndex === index && !spinning ? "180px" : "auto",
                   zIndex: winnerIndex === index && !spinning ? 50 : 1,
                   filter: `${
-                    winnerIndex !== null && winnerIndex !== index
-                      ? "blur(5px)" // For non-Safari browsers
+                    winnerIndex === null
+                      ? "drop-shadow(3px 4px 4px #000)" // No blur if winnerIndex is null
+                      : winnerIndex !== index
+                      ? "blur(5px)" // Blur non-winning cards when there's a winner
                       : isSpinningStarted && highlightedIndex === index
-                      ? "drop-shadow(0px 0px 9px #4ade80)"
-                      : "drop-shadow(3px 4px 4px #000)"
+                      ? "drop-shadow(0px 0px 9px #4ade80)" // Highlight during spinning
+                      : "drop-shadow(3px 4px 4px #000)" // Default shadow
                   }`,
                 }}
                 animate={
@@ -189,16 +189,17 @@ const Game: React.FC = () => {
                   damping: 20,
                 }}
               >
+                {/* Card Component with input handling */}
                 <Card
                   content={card}
                   isWinner={winnerIndex === index}
                   isSpinning={spinning}
                   isHidden={false}
                   handleChange={(value) => handleChange(index, value)}
-                  shouldRotateAll={shouldRotateAll}
+                  shouldRotateAll={shouldRotateAll} // Rotate all cards before spinning
                   shouldRotateWinner={
                     shouldRotateWinner && index === winnerIndex
-                  }
+                  } // Rotate only the winner card after spinning
                 />
               </motion.div>
             ))}

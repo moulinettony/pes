@@ -24,44 +24,27 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-  
-  /* Rotation utilities */
   .rotate-y-180 {
     transform: rotateY(180deg);
   }
-
-  /* Perspective for 3D transforms */
-  .perspective-1000 {
-    perspective: 1000px;
-  }
-
-  /* Preserve 3D transformations */
-  .transform-style-preserve-3d {
-    transform-style: preserve-3d;
-  }
-
-  /* Backface visibility to help with Safari rendering */
-  .backface-hidden {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden; /* Safari-specific */
-  }
 }
 
-/* Custom scrollbar styling for Safari */
 ::-webkit-scrollbar {
-  opacity: 0;
+  opacity: 0
 }
 
-/* Apply hardware acceleration for smoother transitions */
-.card {
-  will-change: transform, filter; /* Enable hardware acceleration for transform and filter */
+.perspective-1000 {
+  perspective: 1000px;
 }
 
-/* Safari-specific CSS using media query */
-@media not all and (min-resolution: 0.001dpcm) and (-webkit-appearance: none) {
-  .blurred {
-    filter: none; /* Disable blur specifically for Safari */
-    opacity: 0.5; /* Use opacity to simulate a blur effect */
-    transform: scale(0.95); /* Slight scale to further simulate blur */
-  }
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
 }
