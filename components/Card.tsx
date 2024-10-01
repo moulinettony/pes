@@ -11,7 +11,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ content, isWinner, isSpinning, isHidden }) => {
   return (
     <div
-      className={`relative w-36 h-12 lg:w-40 lg:h-52 transition-transform duration-700 ease-in-out ${
+      className={`relative w-full h-12 lg:w-40 lg:h-52 transition-transform duration-700 ease-in-out ${
         isHidden ? "opacity-" : ""
       } ${isWinner ? "lg:scale-125" : ""}`}
     >
@@ -25,10 +25,10 @@ const Card: React.FC<CardProps> = ({ content, isWinner, isSpinning, isHidden }) 
         </div>
 
         {/* Card Back */}
-        <div className="absolute h-40 w-full backface-hidden text-neutral-100 rounded-lg bg-black transform rotate-y-180 flex flex-col items-center justify-end">
-          <p className="lg:text-2xl text-xl font-bold">{content}</p>
-          <img className="w-4 mb-3" src="pslogo.svg" alt="" />
-          <div className="h-1/2 w-2 bg-white"></div>
+        <div className="absolute h-12 w-full backface-hidden text-neutral-100 rounded-lg bg-black transform rotate-y-180 flex gap-2 items-center px-4 py-3">
+          <img className="w-4" src="pslogo.svg" alt="" />
+          <div className="w-[1px] bg-white h-full"></div>
+          <p className="lg:text-2xl text-xl font-bold mb-[2px]">{content}</p>
         </div>
       </div>
     </div>
