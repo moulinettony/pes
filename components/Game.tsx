@@ -67,7 +67,7 @@ const Game: React.FC = () => {
         // Scroll back to the top smoothly
         window.scrollTo({ top: 0, behavior: "smooth" });
         setWinnerIndex(randomIndex);
-      }, 300); // Allow the animation to settle
+      }, 1000); // Allow the animation to settle
     }, spinDuration); // Stop after the spin duration
   };
 
@@ -111,7 +111,7 @@ const Game: React.FC = () => {
           {animationComplete && !spinning && (
             <button
               onClick={resetGame}
-              className="px-4 py-2 mb-2 font-bold rounded-md w-full bg-neutral-100 hover:bg-neutral-400"
+              className="px-4 py-2 mb-2 font-bold rounded-md w-full bg-neutral-100 hover:bg-neutral-400 text-black"
             >
               Repeat
             </button>
@@ -120,7 +120,7 @@ const Game: React.FC = () => {
 
         {/* Card Inputs */}
         {!animationComplete && (
-          <div className="z-[1] pl-8 pr-[17px] lg:pb-8 pb-10 w-full grid max-lg:grid-cols-2 gap-4 overflow-y-scroll">
+          <div className="z-[1] px-8 pr-[17px] lg:pb-8 pb-10 w-full grid max-lg:grid-cols-2 gap-4 overflow-auto">
             {cards.map((card, index) => (
               <div key={index} className="w-full">
                 <input
@@ -145,7 +145,7 @@ const Game: React.FC = () => {
       </div>
 
       {/* Cards Section */}
-      <div className="flex flex-col flex w-full items-center relative lg:py-10 py-6 lg:overflow-y-scroll">
+      <div className="flex flex-col flex w-full items-center relative lg:py-10 py-6 lg:overflow-auto">
         <div className="text-center">
           <h1 className="lg:text-4xl text-xl font-bold lg:mb-10 mb-6 text-black">Cards</h1>
           <div
