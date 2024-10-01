@@ -89,38 +89,10 @@ const Game: React.FC = () => {
       {/* Right Sidebar (Input and Buttons) */}
       <div className="relative lg:w-1/4 pt-10 flex flex-col justify-start items-center bg-neutral-800 bg-[url('/wallp1.png')] bg-cover bg-right-top">
         <div className="absolute top-0 h-full w-full bg-black opacity-50"></div>
-        <div className="px-8 lg:pb-4 mb-6 w-full z-[1]">
-          <h1 className="text-2xl font-bold mb-8 text-white">Controls</h1>
-          {/* Spin Button (Hidden after spin completes) */}
-          {!animationComplete && !spinning && (
-            <div className="flex lg:flex-col gap-4 mb-4">
-              <button
-                onClick={spinCards}
-                disabled={spinning || isAnyInputEmpty}
-                className={`px-4 py-2 font-bold rounded-md w-full ${
-                  spinning || isAnyInputEmpty
-                    ? "bg-gray-500 cursor-not-allowed"
-                    : "bg-green-400 hover:bg-green-500"
-                }`}
-              >
-                {spinning ? "Spinning..." : "Spin"}
-              </button>
-            </div>
-          )}
-          {/* Repeat Button (Visible after animation completes) */}
-          {animationComplete && !spinning && (
-            <button
-              onClick={resetGame}
-              className="px-4 py-2 mb-2 font-bold rounded-md w-full bg-neutral-100 hover:bg-neutral-400 text-black"
-            >
-              Repeat
-            </button>
-          )}
-        </div>
-
+        <h1 className="z-[1] text-3xl font-bold mb-8 text-white">Controls</h1>
         {/* Card Inputs */}
         {!animationComplete && (
-          <div className="z-[1] px-8 pr-[17px] lg:pb-8 pb-10 w-full grid max-lg:grid-cols-2 gap-4 overflow-auto">
+          <div className="z-[1] pl-8 pr-[17px] lg:pb-8 pb-10 w-full grid max-lg:grid-cols-2 gap-4 overflow-y-scroll">
             {cards.map((card, index) => (
               <div key={index} className="w-full">
                 <input
@@ -142,12 +114,40 @@ const Game: React.FC = () => {
             )}
           </div>
         )}
+        <div className="px-8 lg:pb-4 mb-6 w-full z-[1]">
+          {/* Spin Button (Hidden after spin completes) */}
+          {!animationComplete && !spinning && (
+            <div className="flex lg:flex-col gap-4 mb-4">
+              <button
+                onClick={spinCards}
+                disabled={spinning || isAnyInputEmpty}
+                className={`px-4 py-2 font-bold rounded-md w-full text-black ${
+                  spinning || isAnyInputEmpty
+                    ? "bg-gray-500 cursor-not-allowed"
+                    : "bg-green-400 hover:bg-green-500"
+                }`}
+              >
+                {spinning ? "Spinning..." : "Spin"}
+              </button>
+            </div>
+          )}
+          {/* Repeat Button (Visible after animation completes) */}
+          {animationComplete && !spinning && (
+            <button
+              onClick={resetGame}
+              className="px-4 py-2 mb-2 font-bold rounded-md w-full bg-neutral-100 hover:bg-neutral-400 text-black"
+            >
+              Repeat
+            </button>
+          )}
+        </div>
       </div>
-
       {/* Cards Section */}
-      <div className="flex flex-col flex w-full items-center relative lg:py-10 py-6 lg:overflow-auto">
+      <div className="flex flex-col flex w-full items-center relative lg:py-10 py-6 lg:overflow-y-scroll">
         <div className="text-center">
-          <h1 className="lg:text-4xl text-xl font-bold lg:mb-10 mb-6 text-black">Cards</h1>
+          <h1 className="lg:text-4xl text-xl font-bold lg:mb-10 mb-6 text-black">
+            Cards
+          </h1>
           <div
             className="grid grid-cols-2 lg:grid-cols-3 gap-6 relative"
             ref={containerRef} // Reference to the container
