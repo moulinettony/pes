@@ -30,11 +30,22 @@ const Game: React.FC = () => {
 
   // Function to reset the game and start a new spin
   const resetGame = () => {
-    setWinnerIndex(null);
-    setSpinning(false);
-    setAnimationComplete(false);
-    setHighlightedIndex(0); // Reset highlight
-    setIsSpinningStarted(false); // Reset spinning started state
+    setWinnerIndex(null);  // Reset winnerIndex to null
+    console.log("Resetting winnerIndex to null");
+  
+    // Force a DOM reflow to ensure React updates the visual state
+    if (containerRef.current) {
+      containerRef.current.offsetHeight;
+    }
+  
+    setTimeout(() => {
+      setSpinning(false);
+      setAnimationComplete(false);
+      setHighlightedIndex(0);
+      setIsSpinningStarted(false);
+      setShouldRotateWinner(false);
+      setShouldRotateAll(false);
+    }, 0);  // Delay other state updates to ensure winnerIndex is reset first
   };
 
   // Function to spin through the cards by changing the highlighted index
@@ -159,11 +170,13 @@ const Game: React.FC = () => {
                   width: winnerIndex === index && !spinning ? "180px" : "auto",
                   zIndex: winnerIndex === index && !spinning ? 50 : 1,
                   filter: `${
-                    winnerIndex !== null && winnerIndex !== index
-                      ? "blur(5px)"
+                    winnerIndex === null
+                      ? "drop-shadow(3px 4px 4px #000)"  // Default shadow when no winner is set (null state)
+                      : winnerIndex !== index
+                      ? "blur(5px)"  // Apply blur only if there's a winner and this card is not the winner
                       : isSpinningStarted && highlightedIndex === index
-                      ? "drop-shadow(0px 0px 9px #4ade80)"
-                      : "drop-shadow(3px 4px 4px #000)"
+                      ? "drop-shadow(0px 0px 9px #4ade80)"  // Highlight the card during spinning
+                      : "drop-shadow(3px 4px 4px #000)"  // Default shadow for other states
                   }`,
                 }}
                 animate={
