@@ -30,23 +30,20 @@ const Game: React.FC = () => {
 
   // Function to reset the game and start a new spin
   const resetGame = () => {
-    setWinnerIndex(null);  // Reset winnerIndex to null
-    console.log("Resetting winnerIndex to null");
-  
-    // Force a DOM reflow to ensure React updates the visual state
-    if (containerRef.current) {
-      containerRef.current.offsetHeight;
-    }
-  
-    setTimeout(() => {
-      setSpinning(false);
-      setAnimationComplete(false);
-      setHighlightedIndex(0);
-      setIsSpinningStarted(false);
-      setShouldRotateWinner(false);
-      setShouldRotateAll(false);
-    }, 0);  // Delay other state updates to ensure winnerIndex is reset first
+    setShouldRotateAll(false);  // Rotate all the cards back before spinning
+    setWinnerIndex(null);  // Reset the winnerIndex to null
+    setSpinning(false);    // Reset spinning state
+    setAnimationComplete(false);  // Reset animation state
+    setHighlightedIndex(0);  // Reset highlighted index
+    setIsSpinningStarted(false);  // Reset spinning started state
   };
+
+  useEffect(() => {
+    if (winnerIndex === null) {
+      console.log("winnerIndex reset to null from useEffect");
+      // Perform any actions that depend on winnerIndex being null here
+    }
+  }, [winnerIndex]);
 
   // Function to spin through the cards by changing the highlighted index
   const spinCards = () => {
@@ -170,13 +167,11 @@ const Game: React.FC = () => {
                   width: winnerIndex === index && !spinning ? "180px" : "auto",
                   zIndex: winnerIndex === index && !spinning ? 50 : 1,
                   filter: `${
-                    winnerIndex === null
-                      ? "drop-shadow(3px 4px 4px #000)"  // Default shadow when no winner is set (null state)
-                      : winnerIndex !== index
-                      ? "blur(5px)"  // Apply blur only if there's a winner and this card is not the winner
+                    winnerIndex !== null && winnerIndex !== index
+                      ? "blur(5px)"
                       : isSpinningStarted && highlightedIndex === index
-                      ? "drop-shadow(0px 0px 9px #4ade80)"  // Highlight the card during spinning
-                      : "drop-shadow(3px 4px 4px #000)"  // Default shadow for other states
+                      ? "drop-shadow(0px 0px 9px #4ade80)"
+                      : "drop-shadow(3px 4px 4px #000)"
                   }`,
                 }}
                 animate={
