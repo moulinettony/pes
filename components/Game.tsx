@@ -30,12 +30,13 @@ const Game: React.FC = () => {
 
   // Function to reset the game and start a new spin
   const resetGame = () => {
-    setShouldRotateAll(false); // Rotate all the cards by 180 degrees before spinning
-    setWinnerIndex(null);
-    setSpinning(false);
-    setAnimationComplete(false);
-    setHighlightedIndex(0); // Reset highlight
-    setIsSpinningStarted(false); // Reset spinning started state
+    setWinnerIndex(null);  // Reset the winner index to null
+    setSpinning(false);    // Reset the spinning state
+    setAnimationComplete(false);  // Reset animation state
+    setHighlightedIndex(0);  // Reset highlight
+    setIsSpinningStarted(false);  // Reset spinning started state
+    setShouldRotateWinner(false); // Reset winner card rotation
+    setShouldRotateAll(false);    // Reset all card rotations
   };
 
   // Function to spin through the cards by changing the highlighted index
