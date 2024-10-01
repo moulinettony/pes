@@ -110,14 +110,14 @@ const Game: React.FC = () => {
                   value={card}
                   onChange={(e) => handleChange(index, e.target.value)}
                   placeholder="Type here..."
-                  className="px-2 py-1 lg:text-sm w-full text-black border border-black shadow-sm shadow-neutral-600 rounded-md bg-white"
+                  className="px-2 py-2 lg:text-xs w-full text-black border border-black shadow-sm shadow-neutral-600 rounded-md bg-white"
                 />
               </div>
             ))}
             {!animationComplete && !spinning && (
               <button
                 onClick={addCard}
-                className="px-4 py-1 text-sm font-semibold shadow shadow-neutral-500 bg-neutral-800 rounded-md hover:bg-neutral-900 w-full text-white"
+                className="px-4 py-2 lg:text-xs font-semibold shadow shadow-neutral-500 bg-neutral-800 rounded-md hover:bg-neutral-900 w-full text-white"
               >
                 + Add
               </button>
