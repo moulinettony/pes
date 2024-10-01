@@ -1,3 +1,4 @@
+//components/Game.tsx
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion"; // Import Framer Motion
@@ -44,14 +45,13 @@ const Game: React.FC = () => {
     setWinnerIndex(null); // Reset winner
     setIsSpinningStarted(true); // Mark that the spin has started
   
-    const spinDuration = 2000; // How long the spin lasts (in ms)
-    const spinInterval = 200; // Interval for moving the yellow border
-    let currentIndex = 0;
+    const spinDuration = 3000; // How long the spin lasts (in ms)
+    const spinInterval = 200; // Interval for moving the red shadow
   
     // Start the interval to highlight different cards
     const interval = setInterval(() => {
-      setHighlightedIndex(currentIndex % cards.length);
-      currentIndex++;
+      const randomIndex = Math.floor(Math.random() * cards.length); // Get a random card index
+      setHighlightedIndex(randomIndex); // Set the highlighted index to the random index
     }, spinInterval);
   
     setTimeout(() => {
@@ -77,7 +77,7 @@ const Game: React.FC = () => {
         }, 100); // Delay to ensure layout is settled before scrolling
   
         setWinnerIndex(randomIndex);
-      }, 1000); // Allow the animation to settle
+      }, 100); // Allow the animation to settle
     }, spinDuration); // Stop after the spin duration
   };
 
@@ -117,7 +117,7 @@ const Game: React.FC = () => {
             {!animationComplete && !spinning && (
               <button
                 onClick={addCard}
-                className="px-4 py-2 text-sm font-semibold bg-neutral-800 rounded-md hover:bg-neutral-900 w-full text-white"
+                className="px-4 py-2 text-sm font-semibold shadow shadow-neutral-500 bg-neutral-800 rounded-md hover:bg-neutral-900 w-full text-white"
               >
                 + Add
               </button>
@@ -145,7 +145,7 @@ const Game: React.FC = () => {
           {animationComplete && !spinning && (
             <button
               onClick={resetGame}
-              className="px-4 py-2 mb-2 font-bold rounded-md w-full bg-neutral-100 hover:bg-neutral-400 text-black"
+              className="px-4 py-2 mb-2 font-bold rounded-md w-full bg-red-600 hover:bg-neutral-400 text-white"
             >
               Repeat
             </button>
@@ -167,8 +167,8 @@ const Game: React.FC = () => {
                 key={index}
                 className={`flex flex-col items-center ${
                   isSpinningStarted && highlightedIndex === index
-                    ? "filter drop-shadow-[0_4px_8px_rgba(255,223,0,0.8)] rounded-xl" // Apply drop shadow
-                    : "filter drop-shadow-none"
+                    ? "rounded-xl" // Apply drop shadow
+                    : ""
                 }`}
                 style={{
                   position:
@@ -188,7 +188,7 @@ const Game: React.FC = () => {
                     winnerIndex !== null && winnerIndex !== index
                       ? "blur(5px)" // Blur non-winner cards
                       : isSpinningStarted && highlightedIndex === index
-                      ? "drop-shadow(0px 0px 9px #DC2626)" // Apply drop-shadow when card is highlighted
+                      ? "drop-shadow(0px 0px 9px #000)" // Apply drop-shadow when card is highlighted
                       : "none"
                   }`,
                 }}
