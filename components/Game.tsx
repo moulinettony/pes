@@ -46,8 +46,8 @@ const Game: React.FC = () => {
   
     setAnimationComplete(false);
     setWinnerIndex(null); // Reset winner
-    setIsSpinningStarted(true); // Mark that the spin has started
     setShouldRotateAll(true); // Rotate all the cards by 180 degrees before spinning
+    setIsSpinningStarted(true); // Mark that the spin has started
   
     const spinDuration = 3000; // How long the spin lasts (in ms)
     const spinInterval = 200; // Interval for moving the red shadow
@@ -105,17 +105,11 @@ const Game: React.FC = () => {
       {/* Right Sidebar (Input and Buttons) */}
       <div className="relative lg:w-1/4 pt-10 flex flex-col justify-start items-center bg-neutral-800 bg-[url('/wallp1.png')] bg-cover bg-right-top">
         <div className="absolute top-0 h-full w-full bg-black opacity-50"></div>
-        <h1 className="z-[1] text-3xl font-bold mb-8 text-white">Controls</h1>
+        <h1 className="z-[1] text-4xl font-bold mb-8 text-white drop-shadow-[2px_2px_3px_black]">Picker Cards</h1>
         <div className="px-8 lg:pb-4 mb-6 w-full z-[1]">
           {/* Spin Button (Hidden after spin completes) */}
           {!animationComplete && !spinning && (
             <div className="flex lg:flex-col gap-4 mb-4">
-              <button
-                onClick={addCard}
-                className="px-4 py-2 lg:text-xs font-semibold shadow-lg shadow-black bg-neutral-800 rounded-md hover:bg-neutral-900 w-full text-white"
-              >
-                + Add
-              </button>
               <button
                 onClick={spinCards}
                 disabled={spinning || isAnyInputEmpty}
@@ -169,8 +163,8 @@ const Game: React.FC = () => {
                     winnerIndex !== null && winnerIndex !== index
                       ? "blur(5px)"
                       : isSpinningStarted && highlightedIndex === index
-                      ? "drop-shadow(0px 0px 9px #000)"
-                      : "none"
+                      ? "drop-shadow(0px 0px 9px #4ade80)"
+                      : "drop-shadow(3px 4px 4px #000)"
                   }`,
                 }}
                 animate={
@@ -198,6 +192,13 @@ const Game: React.FC = () => {
                 />
               </motion.div>
             ))}
+            <button
+                onClick={addCard}
+                className="px-4 h-12 lg:h-52 py-2 lg:text-xs font-semibold drop-shadow-[2px_5px_6px_#00000044] shadow-[inset_0px_20px_20px_0px_#d8d9da] lg:drop-shadow-[4px_4px_10px_#00000044] lg:shadow-[inset_40px_20px_60px_0px_#d8d9da] bg-white lg:hover:bg-neutral-50 rounded-md w-full text-black flex items-center justify-center gap-2"
+              >
+                <p className="rounded-full border border-black h-5 w-5 flex items-center justify-center pt-[2px]">+</p>
+                <p className="text-sm">Add</p>
+              </button>
           </div>
         </div>
       </div>
