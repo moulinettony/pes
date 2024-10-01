@@ -25,9 +25,9 @@ const Card: React.FC<CardProps> = ({ content, isWinner, isSpinning, isHidden }) 
         </div>
 
         {/* Card Back */}
-        <div className="absolute h-12 w-full backface-hidden text-neutral-100 rounded-lg bg-black transform rotate-y-180 flex gap-2 items-center px-4 py-3">
-          <img className="w-4" src="pslogo.svg" alt="" />
-          <div className="w-[1px] bg-white h-full"></div>
+        <div className="absolute h-12 w-full lg:h-48 backface-hidden text-neutral-100 rounded-lg bg-black transform rotate-y-180 flex lg:flex-col gap-2 items-center px-4 max-lg:py-3">
+          <img className="w-4 lg:pt-4" src="pslogo.svg" alt="" />
+          <div className="w-[1px] lg:w-2 bg-white h-full lg:order-2"></div>
           <p className="lg:text-2xl text-xl font-bold mb-[2px]">{content}</p>
         </div>
       </div>

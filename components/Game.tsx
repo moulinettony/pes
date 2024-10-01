@@ -154,7 +154,7 @@ const Game: React.FC = () => {
       </div>
       {/* Cards Section */}
       <div className="flex flex-col flex w-full items-center relative lg:py-10 py-6 px-8 lg:overflow-y-scroll">
-        <div className="text-center w-full">
+        <div className="text-center max-lg:w-full">
           <h1 className="lg:text-4xl text-xl font-bold lg:mb-10 mb-6 text-black">
             Cards
           </h1>
