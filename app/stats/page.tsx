@@ -120,14 +120,14 @@ interface Player {
                   <div className="flex justify-between items-center">
                     <button
                       onClick={() => decrementStat(player.id, "goals")}
-                      className="bg-white hover:bg-neutral-200 text-white font-bold px-[2px] rounded"
+                      className="bg-white hover:bg-neutral-200 text-white font-bold px-1 rounded"
                     >
                       <img className="p-1" src="prev.svg" alt="" />
                     </button>
                     <span>{player.goals}</span>
                     <button
                       onClick={() => incrementStat(player.id, "goals")}
-                      className="bg-white hover:bg-neutral-200 text-white font-bold px-[2px] rounded"
+                      className="bg-white hover:bg-neutral-200 text-white font-bold px-1 rounded"
                     >
                       <img className="p-1" src="next.svg" alt="" />
                     </button>
@@ -139,14 +139,14 @@ interface Player {
                   <div className="flex justify-between items-center">
                     <button
                       onClick={() => decrementStat(player.id, "assists")}
-                      className="bg-white hover:bg-neutral-200 text-white font-bold px-[2px] rounded"
+                      className="bg-white hover:bg-neutral-200 text-white font-bold px-1 rounded"
                     >
                       <img className="p-1" src="prev.svg" alt="" />
                       </button>
                     <span>{player.assists}</span>
                     <button
                       onClick={() => incrementStat(player.id, "assists")}
-                      className="bg-white hover:bg-neutral-200 text-white font-bold px-[2px] rounded"
+                      className="bg-white hover:bg-neutral-200 text-white font-bold px-1 rounded"
                     >
                       <img className="p-1" src="next.svg" alt="" />
                       </button>
@@ -158,14 +158,14 @@ interface Player {
                   <div className="flex justify-between items-center">
                     <button
                       onClick={() => decrementStat(player.id, "yellow_cards")}
-                      className="bg-white hover:bg-neutral-200 text-white font-bold px-[2px] rounded"
+                      className="bg-white hover:bg-neutral-200 text-white font-bold px-1 rounded"
                     >
                       <img className="p-1" src="prev.svg" alt="" />
                       </button>
                     <span>{player.yellow_cards}</span>
                     <button
                       onClick={() => incrementStat(player.id, "yellow_cards")}
-                      className="bg-white hover:bg-neutral-200 text-white font-bold px-[2px] rounded"
+                      className="bg-white hover:bg-neutral-200 text-white font-bold px-1 rounded"
                     >
                       <img className="p-1" src="next.svg" alt="" />
                       </button>
@@ -177,14 +177,14 @@ interface Player {
                   <div className="flex justify-between items-center">
                     <button
                       onClick={() => decrementStat(player.id, "red_cards")}
-                      className="bg-white hover:bg-neutral-200 text-white font-bold px-[2px] rounded"
+                      className="bg-white hover:bg-neutral-200 text-white font-bold px-1 rounded"
                     >
                       <img className="p-1" src="prev.svg" alt="" />
                       </button>
                     <span>{player.red_cards}</span>
                     <button
                       onClick={() => incrementStat(player.id, "red_cards")}
-                      className="bg-white hover:bg-neutral-200 text-white font-bold px-[2px] rounded"
+                      className="bg-white hover:bg-neutral-200 text-white font-bold px-1 rounded"
                     >
                       <img className="p-1" src="next.svg" alt="" />
                       </button>
