@@ -49,7 +49,7 @@ const Card: React.FC<CardProps> = ({
             value={content} // Set the input's value to the card content
             onChange={(e) => handleChange(e.target.value)} // Call handleChange when the input value changes
             placeholder="..."
-            className="px-2 py-1 lg:text-4xl font-bold w-full lg:text-center text-white rounded-md bg-black"
+            className="px-2 py-1 lg:text-2xl font-bold w-full lg:text-center text-white rounded-md bg-black"
           />
         </div>
       </div>

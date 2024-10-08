@@ -1,6 +1,6 @@
 import "./globals.css";
-import { ReactNode } from 'react';
-import { Head } from 'next/document'; // Import Head for meta tags
+import { ReactNode } from "react";
+import Link from 'next/link';
 
 export default function RootLayout({
   children,
@@ -12,11 +12,29 @@ export default function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="A dynamic card game created with Next.js and Tailwind CSS" />
+        <meta
+          name="description"
+          content="A dynamic card game created with Next.js"
+        />
         <title>Card Game</title>
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className="antialiased min-h-screen bg-gray-100">
+        <nav className="bg-black p-4 text-white drop-shadow-[2px_2px_3px_black] fixed top-0 z-[9] w-screen">
+          <div className="max-w-[1200px] mx-auto flex justify-center items-center">
+            <div className="flex gap-4">
+              <Link href="/" className="hover:underline">
+                Home
+              </Link>
+              <Link href="/about" className="hover:underline">
+                About
+              </Link>
+              <Link href="/game" className="hover:underline">
+                Game
+              </Link>
+            </div>
+          </div>
+        </nav>
         {children}
       </body>
     </html>

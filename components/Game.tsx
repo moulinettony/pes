@@ -108,7 +108,7 @@ const Game: React.FC = () => {
   const { centerX, centerY } = calculateCenterOfContainer(); // Calculate center coordinates
 
   return (
-    <div className="flex max-lg:flex-col h-screen w-full">
+    <div className="flex max-lg:flex-col h-screen w-full pt-[56px]">
       {/* Right Sidebar (Input and Buttons) */}
       <div className="relative lg:w-1/4 pt-10 flex flex-col justify-start items-center bg-neutral-800 bg-[url('/wallp1.png')] bg-cover bg-right-top">
         <div className="absolute top-0 h-full w-full bg-black opacity-50"></div>
