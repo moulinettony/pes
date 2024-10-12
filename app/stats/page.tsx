@@ -43,7 +43,7 @@ const PlayerStatsPage: React.FC = () => {
   // Function to update a player's stat in Supabase
   const updateStat = async (playerId: number, field: string, value: number) => {
     const { error } = await supabase
-      .from("playersz")
+      .from("players")
       .update({ [field]: value })
       .eq("id", playerId);
 
@@ -102,15 +102,15 @@ const PlayerStatsPage: React.FC = () => {
             <th className="w-[20%] border border-gray-300 py-2">
               <img className="mx-auto w-6" src="shoe.svg" alt="" />
             </th>
-            {/*<th className="w-[20%] border border-gray-300 py-2">
-                <img className="mx-auto" src="yellow.svg" alt="" />
-              </th>
-              <th className="w-[20%] border border-gray-300 py-2">
-                <img className="mx-auto" src="red.svg" alt="" />
-              </th> */}
             <th className="w-[20%] border border-gray-300 py-2">
-              <img className="mx-auto" src="stad.svg" alt="" />
+              <img className="mx-auto" src="yellow.svg" alt="" />
             </th>
+            <th className="w-[20%] border border-gray-300 py-2">
+              <img className="mx-auto" src="red.svg" alt="" />
+            </th>
+            {/*<th className="w-[20%] border border-gray-300 py-2">
+              <img className="mx-auto" src="stad.svg" alt="" />
+            </th>*/}
           </tr>
         </thead>
         <tbody>
@@ -158,7 +158,7 @@ const PlayerStatsPage: React.FC = () => {
                 </div>
               </td>
 
-              {/* Yellow Cards
+              {/* Yellow Cards */}
                 <td className="w-[20%] border border-gray-300 p-0">
                   <div className="flex justify-between items-center">
                     <button
@@ -175,9 +175,9 @@ const PlayerStatsPage: React.FC = () => {
                       <img className="p-1" src="next.svg" alt="" />
                       </button>
                   </div>
-                </td> */}
+                </td>
 
-              {/* Red Cards 
+              {/* Red Cards */}
                 <td className="w-[20%] border border-gray-300 p-0">
                   <div className="flex justify-between items-center">
                     <button
@@ -194,9 +194,9 @@ const PlayerStatsPage: React.FC = () => {
                       <img className="p-1" src="next.svg" alt="" />
                       </button>
                   </div>
-                </td> */}
+                </td> 
 
-              {/* matches */}
+              {/* matches 
               <td className="w-[20%] border border-gray-300 p-0">
                 <div className="flex justify-between items-center">
                   <button
@@ -213,7 +213,7 @@ const PlayerStatsPage: React.FC = () => {
                     <img className="p-1" src="next.svg" alt="" />
                   </button>
                 </div>
-              </td>
+              </td>*/}
             </tr>
           ))}
         </tbody>
