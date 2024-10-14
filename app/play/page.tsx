@@ -292,7 +292,7 @@ const PlayPage: React.FC = () => {
             <ul className="grid-cols-2 grid">
               {Object.entries(modifiedStats).map(
                 ([playerId, modifications]) => (
-                  <li className="mb-5" key={playerId}>
+                  <li className="mb-5 text-neutral-800" key={playerId}>
                     <strong>
                       {players.find((p) => p.id === Number(playerId))?.name}
                     </strong>
