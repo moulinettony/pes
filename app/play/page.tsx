@@ -123,7 +123,7 @@ const PlayPage: React.FC = () => {
   }
 
   return (
-    <div className="mt-16 py-8 flex gap-4 flex-col items-center h-screen bg-gray-100 w-screen">
+    <div className="mt-16 py-8 flex gap-4 flex-col items-center bg-gray-100 w-screen">
       <h1 className="text-3xl font-bold text-neutral-800">Select Players</h1>
       <div className="bg-black h-[1px] w-20 mx-auto my-4"></div>
       <div className="grid grid-cols-3 justify-items-center gap-5">
@@ -280,7 +280,7 @@ const PlayPage: React.FC = () => {
       {selectedPlayers.length > 0 && (
         <button
           onClick={submitChanges}
-          className="mt-2 bg-neutral-900 hover:bg-black text-white font-bold py-2 px-4 rounded"
+          className="mt-6 bg-neutral-900 hover:bg-black text-white font-bold py-2 px-4 rounded"
         >
           Submit Changes
         </button>
@@ -314,7 +314,7 @@ const PlayPage: React.FC = () => {
             </ul>
             <button
               onClick={() => setShowPopup(false)}
-              className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              className="mt-4 bg-neutral-900 mx-auto text-white font-bold py-2 px-4 rounded"
             >
               Done
             </button>
