@@ -53,7 +53,7 @@ const PlayerStatsPage: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100 w-screen">
-      <h1 className="text-3xl font-bold mb-6 text-black">Player Stats</h1>
+      <h1 className="text-3xl font-bold mb-6 text-neutral-800">Player Stats</h1>
 
       <table className="table-auto border-collapse border border-gray-300 text-white w-full max-w-[1000px] bg-neutral-900">
         <thead>

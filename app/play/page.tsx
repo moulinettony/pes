@@ -110,15 +110,15 @@ const PlayPage: React.FC = () => {
   }
 
   return (
-    <div className="mt-16 py-8 flex flex-col items-center justify-center h-screen bg-gray-100 w-screen overflow-auto">
-      <h1 className="text-3xl font-bold mb-6">Edit Player Stats</h1>
-
+    <div className="mt-16 py-8 flex gap-4 flex-col items-center justify-center h-screen bg-gray-100 w-screen">
+      <h1 className="text-3xl font-bold text-neutral-800">Edit Player Stats</h1>
+      <div className="bg-black h-[1px] w-20"></div>
       {players.map((player) => (
         <div className="w-full">
-          <div className="text-center font-semibold" key={player.id}>
+          <div className="text-center font-semibold text-neutral-800" key={player.id}>
             {player.name}
           </div>
-          <table className="table-auto border-collapse border border-gray-300 text-white w-full max-w-[1000px] bg-neutral-900 my-2">
+          <table className="table-auto border-collapse border border-gray-300 text-white w-full max-w-[1000px] bg-neutral-900 mx-auto">
             <thead>
               <tr>
                 <th className="w-[16%] border border-gray-300 py-2">
@@ -141,7 +141,7 @@ const PlayPage: React.FC = () => {
             <tbody>
               <tr key={player.id}>
                 {/* Goals */}
-                <td className="py-2 w-[20%] border border-gray-300 p-0">
+                <td className="py-2 w-[20%] border border-gray-300 lg:px-6">
                   <div className="flex justify-between items-center">
                     <button
                       onClick={() => modifyStat(player.id, "goals", -1)}
@@ -160,7 +160,7 @@ const PlayPage: React.FC = () => {
                 </td>
 
                 {/* Assists */}
-                <td className="py-2 w-[20%] border border-gray-300 p-0">
+                <td className="py-2 w-[20%] border border-gray-300 lg:px-6">
                   <div className="flex justify-between items-center">
                     <button
                       onClick={() => modifyStat(player.id, "assists", -1)}
@@ -179,7 +179,7 @@ const PlayPage: React.FC = () => {
                 </td>
 
                 {/* Yellow Cards */}
-                <td className="py-2 w-[20%] border border-gray-300 p-0">
+                <td className="py-2 w-[20%] border border-gray-300 lg:px-6">
                   <div className="flex justify-between items-center">
                     <button
                       onClick={() => modifyStat(player.id, "yellow_cards", -1)}
@@ -198,7 +198,7 @@ const PlayPage: React.FC = () => {
                 </td>
 
                 {/* Red Cards */}
-                <td className="py-2 w-[20%] border border-gray-300 p-0">
+                <td className="py-2 w-[20%] border border-gray-300 lg:px-6">
                   <div className="flex justify-between items-center">
                     <button
                       onClick={() => modifyStat(player.id, "red_cards", -1)}
@@ -215,7 +215,7 @@ const PlayPage: React.FC = () => {
                     </button>
                   </div>
                 </td>
-                <td className="py-2 w-[20%] border border-gray-300 p-0">
+                <td className="py-2 w-[20%] border border-gray-300 lg:px-6">
                   <div className="flex justify-between items-center">
                     <button
                       onClick={() => modifyStat(player.id, "matches", -1)}
@@ -240,7 +240,7 @@ const PlayPage: React.FC = () => {
 
       <button
         onClick={submitChanges}
-        className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="mt-2 bg-neutral-800 hover:bg-black text-white font-bold py-2 px-4 rounded"
       >
         Submit Changes
       </button>
@@ -248,7 +248,7 @@ const PlayPage: React.FC = () => {
       {/* Popup Modal */}
       {showPopup && (
         <div className="fixed backdrop-blur-sm p-4 h-screen inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center overflow-auto z-20">
-          <div className="bg-white p-4 lg:w-96 rounded-lg max-lg:h-full shadow-lg w-full">
+          <div className="bg-white p-4 lg:w-96 rounded-lg max-lg:max-h-full shadow-lg w-full">
             <ul className="grid-cols-2 grid">
               {submittedContent.map((player) => (
                 <li className="mb-5" key={player.id}>
