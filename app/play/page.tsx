@@ -141,7 +141,7 @@ const PlayPage: React.FC = () => {
             />
             <label
               htmlFor={`player-${player.id}`}
-              className="tgl-btn text-center py-1 px-2 font-semibold text-white"
+              className="tgl-btn text-center py-1 px-3 font-semibold text-white"
             >
               {player.name}
             </label>
