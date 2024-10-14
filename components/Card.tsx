@@ -1,3 +1,4 @@
+//components/Card.tsx
 import React from "react";
 
 interface CardProps {
@@ -21,7 +22,7 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <div
-      className={`relative w-full h-12 lg:w-40 lg:h-52 transition-transform duration-700 ease-in-out ${
+      className={`relative w-full h-12 lg:w-40 lg:h-48 transition-transform duration-700 ease-in-out ${
         isHidden ? "opacity-" : ""
       } ${isWinner ? "lg:scale-125" : ""}`}
     >

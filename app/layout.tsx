@@ -24,12 +24,12 @@ export default function RootLayout({
           <div className="max-w-[1200px] mx-auto flex justify-center items-center">
             <div className="flex gap-4">
               <Link href="/" className="hover:underline">
-                Home
+                Draw
               </Link>
-              <Link href="/about" className="hover:underline">
-                About
+              <Link href="/stats" className="hover:underline">
+                Table
               </Link>
-              <Link href="/game" className="hover:underline">
+              <Link href="/play" className="hover:underline">
                 Game
               </Link>
             </div>
