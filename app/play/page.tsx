@@ -141,7 +141,7 @@ const PlayPage: React.FC = () => {
           <h1 className="text-2xl font-bold mb-4 text-black">Enter Password</h1>
           <input
             type="password"
-            className="px-4 py-2 border rounded-lg mb-4"
+            className="px-4 py-2 border text-black rounded-lg mb-4"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
