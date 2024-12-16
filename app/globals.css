@@ -153,3 +153,16 @@ body {
 .checkbox-wrapper-10 .tgl-flip:checked + .tgl-btn:active:after {
   transform: rotateY(20deg);
 }
+
+.cont:after, .cont:before {
+  content: "";
+  border-bottom: 17px solid #000;
+}
+
+.cont:after {
+  border-right: 20px solid transparent;
+}
+
+.cont:before {
+  border-left: 20px solid transparent;
+}

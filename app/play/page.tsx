@@ -21,6 +21,18 @@ const PlayPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [showPopup, setShowPopup] = useState(false); // State to control popup visibility
   const [selectedPlayers, setSelectedPlayers] = useState<number[]>([]);
+  const [password, setPassword] = useState(""); // Stores the entered password
+  const [accessGranted, setAccessGranted] = useState(false); // Tracks if access is granted
+  const [errorMessage, setErrorMessage] = useState(""); // Stores error message
+
+  const verifyPassword = () => {
+    if (password === "moulinettony") {
+      // Replace with your desired password
+      setAccessGranted(true);
+    } else {
+      setErrorMessage("Incorrect password. Please try again. (ndc dofus)");
+    }
+  };
 
   // Fetch all players from Supabase
   const fetchPlayerData = async () => {
@@ -120,6 +132,34 @@ const PlayPage: React.FC = () => {
 
   if (loading) {
     return <div>Loading...</div>;
+  }
+
+  if (!accessGranted) {
+    return (
+      <div className="flex flex-col justify-center h-screen bg-gray-100">
+        <div className="flex flex-col items-center h-fill relative">
+          <h1 className="text-2xl font-bold mb-4">Enter Password</h1>
+          <input
+            type="password"
+            className="px-4 py-2 border rounded-lg mb-4"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            onClick={verifyPassword}
+            className="bg-neutral-900 text-white py-2 px-4 rounded hover:bg-black"
+          >
+            Submit
+          </button>
+          {errorMessage && (
+            <p className="text-red-500 text-sm mt-2 absolute bottom-[-30px]">
+              {errorMessage}
+            </p> // Display error message
+          )}
+        </div>
+      </div>
+    );
   }
 
   return (

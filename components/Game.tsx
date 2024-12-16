@@ -43,6 +43,16 @@ const Game: React.FC = () => {
     setOriginalCards([...originalCards, ""]); // Add to originalCards as well
   };
 
+  const removeCard = (index: number) => {
+    const updatedCards = [...cards];
+    updatedCards.splice(index, 1); // Remove card at the specified index
+    setCards(updatedCards);
+
+    const updatedOriginalCards = [...originalCards];
+    updatedOriginalCards.splice(index, 1); // Sync with originalCards
+    setOriginalCards(updatedOriginalCards);
+  };
+
   // Function to reset the game and start a new spin
   const resetGame = () => {
     setCards([...originalCards]); // Restore only the original set of cards
@@ -59,21 +69,21 @@ const Game: React.FC = () => {
   const continueGame = () => {
     if (winnerIndex !== null) {
       const winnerCard = cards[winnerIndex];
-  
+
       // Move the winner to excluded winners and remove from the current cards array
       setExcludedWinners([...excludedWinners, winnerCard]);
-  
+
       const updatedCards = cards.filter((_, index) => index !== winnerIndex);
       setCards(updatedCards);
     }
-  
+
     setShouldRotateAll(false);
     setWinnerIndex(null);
     setSpinning(false);
     setAnimationComplete(false);
     setHighlightedIndex(0);
     setIsSpinningStarted(false);
-  
+
     // Automatically spin after continuing
     setTimeout(() => {
       spinCards();
@@ -175,23 +185,19 @@ const Game: React.FC = () => {
         </div>
       </div>
       {/* Cards Section */}
-      <div className="flex flex-col flex w-full items-center relative lg:py-10 py-6 px-8 lg:overflow-y-scroll">
+      <div className="flex flex-col flex w-full items-center relative lg:py-10 py-6 px-4 lg:overflow-y-scroll">
         <div className="text-center max-lg:w-full">
           <h1 className="lg:text-4xl text-xl font-bold lg:mb-10 mb-6 text-black">
             Cards
           </h1>
           <div
-            className="grid grid-cols-2 lg:grid-cols-3 gap-6 relative"
+            className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6 relative"
             ref={containerRef} // Reference to the container
           >
             {cards.map((card, index) => (
               <motion.div
                 key={index}
-                className={`flex flex-col items-center ${
-                  isSpinningStarted && highlightedIndex === index
-                    ? "rounded-xl"
-                    : ""
-                }`}
+                className={`flex flex-col items-center relative group`} // Add 'group' class for hover styling
                 style={{
                   position:
                     winnerIndex === index && !spinning ? "fixed" : "relative",
@@ -216,23 +222,34 @@ const Game: React.FC = () => {
                   damping: 20,
                 }}
               >
-                {/* Card Component with input handling */}
+                {/* Card number display */}
+                <div className="cont relative flex font-medium text-gray-700">
+                  <p className="absolute text-white left-[50%] translate-x-[-55%] z-[9] top-2 text-xs italic font-semibold">{index + 1}</p>
+                </div>
                 <Card
                   content={card}
                   isWinner={winnerIndex === index}
                   isSpinning={spinning}
                   isHidden={false}
                   handleChange={(value) => handleChange(index, value)}
-                  shouldRotateAll={shouldRotateAll} // Rotate all cards before spinning
+                  shouldRotateAll={shouldRotateAll}
                   shouldRotateWinner={
                     shouldRotateWinner && index === winnerIndex
-                  } // Rotate only the winner card after spinning
+                  }
                 />
+                {/* Remove Button (Visible on hover) */}
+                <button
+                  onClick={() => removeCard(index)} // Call removeCard function
+                  tabIndex={-1}
+                  className="absolute z-[10] left-2 top-7 lg:top-7 lg:left-[50%] lg:translate-x-[-50%] bg-red-500 w-fit text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                >
+                  X
+                </button>
               </motion.div>
             ))}
             <button
               onClick={addCard}
-              className="px-4 h-12 lg:h-48 py-2 lg:text-xs font-semibold drop-shadow-[2px_5px_6px_#00000044] shadow-[inset_0px_20px_20px_0px_#d8d9da] lg:drop-shadow-[4px_4px_10px_#00000044] lg:shadow-[inset_40px_20px_60px_0px_#d8d9da] bg-white lg:hover:bg-neutral-50 rounded-md w-full text-black flex items-center justify-center gap-2"
+              className="px-4 h-12 mt-[17px] lg:h-48 py-2 lg:text-xs font-semibold drop-shadow-[2px_5px_6px_#00000044] shadow-[inset_0px_20px_20px_0px_#d8d9da] lg:drop-shadow-[4px_4px_10px_#00000044] lg:shadow-[inset_40px_20px_60px_0px_#d8d9da] bg-white lg:hover:bg-neutral-50 rounded-md w-full text-black flex items-center justify-center gap-2"
             >
               <p className="rounded-full border border-black h-5 w-5 flex items-center justify-center pt-[2px]">
                 +
