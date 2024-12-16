@@ -138,7 +138,7 @@ const PlayPage: React.FC = () => {
     return (
       <div className="flex flex-col justify-center h-screen bg-gray-100">
         <div className="flex flex-col items-center h-fill relative">
-          <h1 className="text-2xl font-bold mb-4">Enter Password</h1>
+          <h1 className="text-2xl font-bold mb-4 text-black">Enter Password</h1>
           <input
             type="password"
             className="px-4 py-2 border rounded-lg mb-4"
