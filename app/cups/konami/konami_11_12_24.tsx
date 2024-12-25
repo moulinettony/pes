@@ -387,7 +387,7 @@ const UCLResults = () => {
         drawn: 1,
         lost: 2,
         goals: "2-6",
-        points: 0,
+        points: 1,
       },
     ],
     H: [
@@ -832,6 +832,9 @@ const UCLResults = () => {
       )}
       {activeTab === "group" && (
         <div>
+          <div>
+            <h3 className="mb-6 text-center text-2xl">Groupe Match</h3>
+          </div>
           {Object.keys(groups).map((groupKey) => (
             <GroupTable
               key={groupKey}
