@@ -844,7 +844,7 @@ const UCLResults = () => {
       {activeTab === "topScorer" && (
         <div className="">
           <h2 className="text-2xl font-bold text-center mb-6">Goals</h2>
-          <table className="max-lg:w-full">
+          <table className="w-full">
             <thead>
               <tr>
                 <th className="px-2 py-2 max-lg:text-sm">Player</th>
@@ -881,7 +881,7 @@ const UCLResults = () => {
 
           <h2 className="text-2xl font-bold text-center my-6">Assits</h2>
 
-          <table className="max-lg:w-full">
+          <table className="w-full">
             <thead>
               <tr>
                 <th className="px-2 py-2 max-lg:text-sm">Player</th>

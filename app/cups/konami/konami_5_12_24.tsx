@@ -5,7 +5,107 @@ const UCLResults = () => {
   const [activeTab, setActiveTab] = useState<"matches" | "group" | "topScorer">(
     "matches"
   );
-  
+
+  const topScorers = [
+    {
+      name: "M. Saviç",
+      score: 3,
+      team: "/clubs/hilal.svg",
+      img: "/countries/serbia.svg",
+    },
+    {
+      name: "Neymar Jr",
+      score: 3,
+      team: "/clubs/hilal.svg",
+      img: "/countries/brezil.svg",
+    },
+    {
+      name: "Mahrez",
+      score: 3,
+      team: "/clubs/ahli.svg",
+      img: "/countries/algeria.svg",
+    },
+    {
+      name: "Harry Kane",
+      score: 3,
+      team: "/clubs/bayern.svg",
+      img: "/countries/englend.svg",
+    },
+    {
+      name: "Mbappe",
+      score: 3,
+      team: "/clubs/rma.svg",
+      img: "/countries/france.svg",
+    },
+    {
+      name: "M. Salah",
+      score: 5,
+      team: "/clubs/liver.svg",
+      img: "/countries/egypt.svg",
+    },
+    {
+      name: "D. Nunez",
+      score: 3,
+      team: "/clubs/liver.svg",
+      img: "/countries/uruguay.svg",
+    },
+    {
+      name: "Mitroviç",
+      score: 2,
+      team: "/clubs/hilal.svg",
+      img: "/countries/serbia.svg",
+    },
+  ];
+  const topAssits = [
+    {
+      name: "Alister",
+      score: 3,
+      team: "/clubs/liver.svg",
+      img: "/countries/argentina.svg",
+    },
+    {
+      name: "Ruben Neves",
+      score: 2,
+      team: "/clubs/hilal.svg",
+      img: "/countries/portugal.svg",
+    },
+    {
+      name: "Mahrez",
+      score: 2,
+      team: "/clubs/ahli.svg",
+      img: "/countries/algeria.svg",
+    },
+    {
+      name: "G. Kondogbia",
+      score: 2,
+      team: "/clubs/marseille.svg",
+      img: "/countries/centre.svg",
+    },
+    {
+      name: "Phil Foden",
+      score: 2,
+      team: "/clubs/city.svg",
+      img: "/countries/englend.svg",
+    },
+    {
+      name: "Modriç",
+      score: 2,
+      team: "/clubs/rma.svg",
+      img: "/countries/croatia.svg",
+    },
+    {
+      name: "Saviç",
+      score: 2,
+      team: "/clubs/hilal.svg",
+      img: "/countries/armenia.svg",
+    },
+    {
+      name: "Mitroviç",
+      score: 2,
+      team: "/clubs/hilal.svg",
+      img: "/countries/serbia.svg",
+    },
+  ];
   // Knockout Stage Results
   const roundOf16 = [
     {
@@ -163,7 +263,7 @@ const UCLResults = () => {
             activeTab === "group" ? "bg-red-700" : "bg-[#021e28]"
           } hover:bg-red-700`}
         >
-          Top Assists
+          Top Scorers
         </button>
         <button
           onClick={() => setActiveTab("topScorer")}
@@ -171,7 +271,7 @@ const UCLResults = () => {
             activeTab === "topScorer" ? "bg-red-700" : "bg-[#021e28]"
           } hover:bg-red-700`}
         >
-          Top Scorers
+          Top Assists
         </button>
       </div>
 
@@ -347,10 +447,83 @@ const UCLResults = () => {
         </div>
       )}
       {activeTab === "group" && (
-        <div>{/* Insert your group standings sections here */}</div>
+        <div className="">
+          <h2 className="text-2xl font-bold text-center mb-6">Goals</h2>
+          <table className="w-full">
+            <thead>
+              <tr>
+                <th className="px-2 py-2 max-lg:text-sm">Player</th>
+                <th className="px-2 py-2 max-lg:text-sm">Score</th>
+                <th className="px-2 py-2 max-lg:text-sm">Team</th>
+              </tr>
+            </thead>
+            <tbody>
+              {topScorers.map((player, index) => (
+                <tr
+                  key={index}
+                  className={`${
+                    index % 2 === 0 ? "bg-[#021e28]" : "bg-[#030a0e]"
+                  }`}
+                >
+                  <td className="p-2 flex items-center max-lg:text-sm max-lg:h-[40px]">
+                    <img src={player.img} alt="" className="max-lg:w-6 mr-2" />
+                    {player.name}
+                  </td>
+                  <td className="p-2 max-lg:text-sm text-center max-lg:h-[40px]">
+                    {player.score}
+                  </td>
+                  <td className="p-2 max-lg:text-sm text-center max-lg:h-[40px]">
+                    <img
+                      src={player.team}
+                      alt={player.team}
+                      className="max-lg:h-6 mx-auto"
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
       {activeTab === "topScorer" && (
-        <div>{/* Insert your top scorers sections here */}</div>
+        <div className="">
+          <h2 className="text-2xl font-bold text-center my-6">Assits</h2>
+
+          <table className="w-full">
+            <thead>
+              <tr>
+                <th className="px-2 py-2 max-lg:text-sm">Player</th>
+                <th className="px-2 py-2 max-lg:text-sm">Score</th>
+                <th className="px-2 py-2 max-lg:text-sm">Team</th>
+              </tr>
+            </thead>
+            <tbody>
+              {topAssits.map((player, index) => (
+                <tr
+                  key={index}
+                  className={`${
+                    index % 2 === 0 ? "bg-[#021e28]" : "bg-[#030a0e]"
+                  }`}
+                >
+                  <td className="p-2 flex items-center max-lg:text-sm max-lg:h-[40px]">
+                    <img src={player.img} alt="" className="max-lg:w-6 mr-2" />
+                    {player.name}
+                  </td>
+                  <td className="p-2 max-lg:text-sm text-center max-lg:h-[40px]">
+                    {player.score}
+                  </td>
+                  <td className="p-2 max-lg:text-sm text-center max-lg:h-[40px]">
+                    <img
+                      src={player.team}
+                      alt={player.team}
+                      className="max-lg:h-6 mx-auto"
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

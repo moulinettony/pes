@@ -6,6 +6,107 @@ const UCLResults = () => {
     "matches"
   );
 
+  const topScorers = [
+    {
+      name: "Haller",
+      score: 4,
+      team: "/clubs/bvb.svg",
+      img: "/countries/ivory.svg",
+    },
+    {
+      name: "El Shaarawy",
+      score: 3,
+      team: "/clubs/roma.svg",
+      img: "/countries/italy.svg",
+    },
+    {
+      name: "Richarlison",
+      score: 3,
+      team: "/clubs/tot.svg",
+      img: "/countries/brezil.svg",
+    },
+    {
+      name: "N. Fûllkrug",
+      score: 3,
+      team: "/clubs/bvb.svg",
+      img: "/countries/germany.svg",
+    },
+    {
+      name: "Dybala",
+      score: 2,
+      team: "/clubs/roma.svg",
+      img: "/countries/argentina.svg",
+    },
+    {
+      name: "Sabitzer",
+      score: 2,
+      team: "/clubs/bvb.svg",
+      img: "/countries/austria.svg",
+    },
+    {
+      name: "Eddie Nketiah",
+      score: 2,
+      team: "/clubs/arsenal.svg",
+      img: "/countries/englend.svg",
+    },
+    {
+      name: "Mkhitaryan",
+      score: 2,
+      team: "/clubs/inter.svg",
+      img: "/countries/armenia.svg",
+    },
+  ];
+  const topAssits = [
+    {
+      name: "Haller",
+      score: 3,
+      team: "/clubs/bvb.svg",
+      img: "/countries/ivory.svg",
+    },
+    {
+      name: "Donyell Malen",
+      score: 3,
+      team: "/clubs/bvb.svg",
+      img: "/countries/netherlands.svg",
+    },
+    {
+      name: "Lukaku",
+      score: 2,
+      team: "/clubs/roma.svg",
+      img: "/countries/belgium.svg",
+    },
+    {
+      name: "Son Heung-min",
+      score: 2,
+      team: "/clubs/tot.svg",
+      img: "/countries/southcorea.svg",
+    },
+    {
+      name: "Sabitzer",
+      score: 2,
+      team: "/clubs/bvb.svg",
+      img: "/countries/austria.svg",
+    },
+    {
+      name: "Bokayo Saka",
+      score: 2,
+      team: "/clubs/arsenal.svg",
+      img: "/countries/englend.svg",
+    },
+    {
+      name: "Marcus Thuram",
+      score: 2,
+      team: "/clubs/inter.svg",
+      img: "/countries/france.svg",
+    },
+    {
+      name: "El Shaarawy",
+      score: 1,
+      team: "/clubs/roma.svg",
+      img: "/countries/italy.svg",
+    },
+  ];
+
   // Knockout Stage Results
   const roundOf16 = [
     {
@@ -347,10 +448,84 @@ const UCLResults = () => {
         </div>
       )}
       {activeTab === "group" && (
-        <div>{/* Insert your group standings sections here */}</div>
+        <div className="">
+          <h2 className="text-2xl font-bold text-center my-6">Assits</h2>
+
+          <table className="w-full">
+            <thead>
+              <tr>
+                <th className="px-2 py-2 max-lg:text-sm">Player</th>
+                <th className="px-2 py-2 max-lg:text-sm">Score</th>
+                <th className="px-2 py-2 max-lg:text-sm">Team</th>
+              </tr>
+            </thead>
+            <tbody>
+              {topScorers.map((player, index) => (
+                <tr
+                  key={index}
+                  className={`${
+                    index % 2 === 0 ? "bg-[#021e28]" : "bg-[#030a0e]"
+                  }`}
+                >
+                  <td className="p-2 flex items-center max-lg:text-sm max-lg:h-[40px]">
+                    <img src={player.img} alt="" className="max-lg:w-6 mr-2" />
+                    {player.name}
+                  </td>
+                  <td className="p-2 max-lg:text-sm text-center max-lg:h-[40px]">
+                    {player.score}
+                  </td>
+                  <td className="p-2 max-lg:text-sm text-center max-lg:h-[40px]">
+                    <img
+                      src={player.team}
+                      alt={player.team}
+                      className="max-lg:h-6 mx-auto"
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
       {activeTab === "topScorer" && (
-        <div>{/* Insert your top scorers sections here */}</div>
+        <div className="">
+        <h2 className="text-2xl font-bold text-center my-6">Assits</h2>
+
+        <table className="w-full">
+          <thead>
+            <tr>
+              <th className="px-2 py-2 max-lg:text-sm">Player</th>
+              <th className="px-2 py-2 max-lg:text-sm">Score</th>
+              <th className="px-2 py-2 max-lg:text-sm">Team</th>
+            </tr>
+          </thead>
+          <tbody>
+            {topAssits.map((player, index) => (
+              <tr
+                key={index}
+                className={`${
+                  index % 2 === 0 ? "bg-[#021e28]" : "bg-[#030a0e]"
+                }`}
+              >
+                <td className="p-2 flex items-center max-lg:text-sm max-lg:h-[40px]">
+                  <img src={player.img} alt="" className="max-lg:w-6 mr-2" />
+                  {player.name}
+                </td>
+                <td className="p-2 max-lg:text-sm text-center max-lg:h-[40px]">
+                  {player.score}
+                </td>
+                <td className="p-2 max-lg:text-sm text-center max-lg:h-[40px]">
+                  <img
+                    src={player.team}
+                    alt={player.team}
+                    className="max-lg:h-6 mx-auto"
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       )}
     </div>
   );
