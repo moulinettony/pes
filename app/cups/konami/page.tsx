@@ -20,9 +20,9 @@ const App = () => {
           value={selectedKonami}
           onChange={handleDropdownChange}
         >
-          <option value="5_12_24">Konami 5 Dec 2024</option>
-          <option value="6_12_24">Konami 6 Dec 2024</option>
-          <option value="11_12_24">Konami 11 Dec 2024</option>
+          <option value="5_12_24">5 Dec 2024</option>
+          <option value="6_12_24">6 Dec 2024</option>
+          <option value="11_12_24">11 Dec 2024</option>
         </select>
       </div>
 
