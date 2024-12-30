@@ -239,7 +239,7 @@ const UCLResults = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#030a0e] text-white py-12 px-5">
+    <div className="min-h-screen text-white py-12 px-5 max-w-[800px] mx-auto">
       <h1 className="text-4xl font-bold text-center mb-2">KONAMI Cup</h1>
       <h3 className="mb-6 text-center text-2xl flex items-center justify-center gap-3">
         Winner:
@@ -281,10 +281,10 @@ const UCLResults = () => {
         <div className="max-w-5xl mx-auto">
           {/* Round of 16 */}
           <div className="mb-8">
-            <h3 className="text-xl font-semibold mb-3 text-center">
-              Round of 16
+            <h3 className="font-semibold py-1 text-center bg-red-800">
+              Round - 16
             </h3>
-            <table className="w-full">
+            <table className="w-full border border-neutral-700">
               <tbody>
                 {roundOf16.map((match, index) => (
                   <tr
@@ -294,28 +294,36 @@ const UCLResults = () => {
                     }`}
                   >
                     {/* Team 1 */}
-                    <td className="py-2 px-2 text-center lg:min-w-[45%] flex lg:justify-center gap-2 items-center max-lg:h-[40px]">
-                      <img
-                        src={match.img1}
-                        alt={match.team1}
-                        className="max-lg:h-5"
-                      />
-                      <p className="lg:mt-1 max-lg:text-sm">{match.team1}</p>
+                    <td className="py-2 px-2 lg:min-w-[304px] flex justify-end max-lg:h-[40px]">
+                      <div className="flex gap-2 lg:min-w-[40%] min-w-full">
+                        <img
+                          src={match.img1}
+                          alt={match.team1}
+                          className="max-lg:h-5 max-lg:w-4 w-6 h-6"
+                        />
+                        <p className="lg:mt-1 max-lg:text-sm whitespace-nowrap">
+                          {match.team1}
+                        </p>
+                      </div>
                     </td>
 
                     {/* Score */}
-                    <td className="py-2 px-2 text-center lg:w-[10%] font-semibold max-lg:text-sm max-lg:h-[40px]">
+                    <td className="py-2 px-2 text-center lg:w-[152px] font-bold max-lg:text-sm whitespace-nowrap lg:h-[40px]">
                       {match.score1} - {match.score2}
                     </td>
 
                     {/* Team 2 */}
-                    <td className="py-2 px-2 text-center lg:min-w-[45%] flex lg:justify-center gap-2 items-center max-lg:h-[40px]">
-                      <img
-                        src={match.img2}
-                        alt={match.team2}
-                        className="max-lg:h-5"
-                      />
-                      <p className="lg:mt-1 max-lg:text-sm">{match.team2}</p>
+                    <td className="py-2 px-2 lg:min-w-[304px] flex max-lg:h-[40px]">
+                      <div className="flex gap-2 lg:min-w-[40%] min-w-full">
+                        <img
+                          src={match.img2}
+                          alt={match.team2}
+                          className="max-lg:h-5 max-lg:w-4 w-6 h-6"
+                        />
+                        <p className="lg:mt-1 max-lg:text-sm whitespace-nowrap">
+                          {match.team2}
+                        </p>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -325,10 +333,10 @@ const UCLResults = () => {
 
           {/* Quarterfinals */}
           <div className="mb-8">
-            <h3 className="text-xl font-semibold mb-3 text-center">
+            <h3 className="font-semibold py-1 text-center bg-red-800">
               Quarterfinals
             </h3>
-            <table className="w-full">
+            <table className="w-full border border-neutral-700">
               <tbody>
                 {quarterFinals.map((match, index) => (
                   <tr
@@ -338,28 +346,36 @@ const UCLResults = () => {
                     }`}
                   >
                     {/* Team 1 */}
-                    <td className="py-2 px-2 text-center lg:min-w-[45%] flex lg:justify-center gap-2 items-center max-lg:h-[40px]">
-                      <img
-                        src={match.img1}
-                        alt={match.team1}
-                        className="max-lg:h-5"
-                      />
-                      <p className="lg:mt-1 max-lg:text-sm">{match.team1}</p>
+                    <td className="py-2 px-2 lg:min-w-[304px] flex justify-end max-lg:h-[40px]">
+                      <div className="flex gap-2 lg:min-w-[40%] min-w-full">
+                        <img
+                          src={match.img1}
+                          alt={match.team1}
+                          className="max-lg:h-5 max-lg:w-4 w-6 h-6"
+                        />
+                        <p className="lg:mt-1 max-lg:text-sm whitespace-nowrap">
+                          {match.team1}
+                        </p>
+                      </div>
                     </td>
 
                     {/* Score */}
-                    <td className="py-2 px-2 text-center lg:w-[10%] font-bold max-lg:text-sm max-lg:h-[40px]">
+                    <td className="py-2 px-2 text-center lg:w-[152px] font-bold max-lg:text-sm whitespace-nowrap lg:h-[40px]">
                       {match.score1} - {match.score2}
                     </td>
 
                     {/* Team 2 */}
-                    <td className="py-2 px-2 text-center lg:min-w-[45%] flex lg:justify-center gap-2 items-center max-lg:h-[40px]">
-                      <img
-                        src={match.img2}
-                        alt={match.team2}
-                        className="max-lg:h-5"
-                      />
-                      <p className="lg:mt-1 max-lg:text-sm">{match.team2}</p>
+                    <td className="py-2 px-2 lg:min-w-[304px] flex max-lg:h-[40px]">
+                      <div className="flex gap-2 lg:min-w-[40%] min-w-full">
+                        <img
+                          src={match.img2}
+                          alt={match.team2}
+                          className="max-lg:h-5 max-lg:w-4 w-6 h-6"
+                        />
+                        <p className="lg:mt-1 max-lg:text-sm whitespace-nowrap">
+                          {match.team2}
+                        </p>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -369,10 +385,10 @@ const UCLResults = () => {
 
           {/* Semifinals */}
           <div className="mb-8">
-            <h3 className="text-xl font-semibold mb-3 text-center">
+            <h3 className="font-semibold py-1 text-center bg-red-800">
               Semifinals
             </h3>
-            <table className="w-full">
+            <table className="w-full border border-neutral-700">
               <tbody>
                 {semiFinals.map((match, index) => (
                   <tr
@@ -382,28 +398,36 @@ const UCLResults = () => {
                     }`}
                   >
                     {/* Team 1 */}
-                    <td className="py-2 px-2 text-center lg:min-w-[45%] flex lg:justify-center gap-2 items-center max-lg:h-[40px]">
-                      <img
-                        src={match.img1}
-                        alt={match.team1}
-                        className="max-lg:h-5"
-                      />
-                      <p className="lg:mt-1 max-lg:text-sm">{match.team1}</p>
+                    <td className="py-2 px-2 lg:min-w-[304px] flex justify-end max-lg:h-[40px]">
+                      <div className="flex gap-2 lg:min-w-[40%] min-w-full">
+                        <img
+                          src={match.img1}
+                          alt={match.team1}
+                          className="max-lg:h-5 max-lg:w-4 w-6 h-6"
+                        />
+                        <p className="lg:mt-1 max-lg:text-sm whitespace-nowrap">
+                          {match.team1}
+                        </p>
+                      </div>
                     </td>
 
                     {/* Score */}
-                    <td className="py-2 px-2 text-center lg:w-[10%] font-bold max-lg:text-sm max-lg:h-[40px]">
+                    <td className="py-2 px-2 text-center lg:w-[152px] font-bold max-lg:text-sm whitespace-nowrap lg:h-[40px]">
                       {match.score1} - {match.score2}
                     </td>
 
                     {/* Team 2 */}
-                    <td className="py-2 px-2 text-center lg:min-w-[45%] flex lg:justify-center gap-2 items-center max-lg:h-[40px]">
-                      <img
-                        src={match.img2}
-                        alt={match.team2}
-                        className="max-lg:h-5"
-                      />
-                      <p className="lg:mt-1 max-lg:text-sm">{match.team2}</p>
+                    <td className="py-2 px-2 lg:min-w-[304px] flex max-lg:h-[40px]">
+                      <div className="flex gap-2 lg:min-w-[40%] min-w-full">
+                        <img
+                          src={match.img2}
+                          alt={match.team2}
+                          className="max-lg:h-5 max-lg:w-4 w-6 h-6"
+                        />
+                        <p className="lg:mt-1 max-lg:text-sm whitespace-nowrap">
+                          {match.team2}
+                        </p>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -413,33 +437,41 @@ const UCLResults = () => {
 
           {/* Final */}
           <div>
-            <h3 className="text-xl font-semibold mb-3 text-center">Final</h3>
-            <table className="w-full">
+            <h3 className="font-semibold py-1 text-center bg-red-800">Final</h3>
+            <table className="w-full border border-neutral-700">
               <tbody>
                 <tr className="bg-[#021e28]">
                   {/* Team 1 */}
-                  <td className="py-2 px-2 text-center lg:min-w-[45%] flex lg:justify-center gap-2 items-center max-lg:h-[40px]">
-                    <img
-                      src={final.img1}
-                      alt={final.team1}
-                      className="max-lg:h-5"
-                    />
-                    <p className="lg:mt-1 max-lg:text-sm">{final.team1}</p>
+                  <td className="py-2 px-2 lg:min-w-[304px] flex justify-end max-lg:h-[40px]">
+                    <div className="flex gap-2 lg:min-w-[40%] min-w-full">
+                      <img
+                        src={final.img1}
+                        alt={final.team1}
+                        className="max-lg:h-5 max-lg:w-4 w-6 h-6"
+                      />
+                      <p className="max-lg:text-sm whitespace-nowrap">
+                        {final.team1}
+                      </p>
+                    </div>
                   </td>
 
                   {/* Score */}
-                  <td className="py-2 px-2 text-center lg:w-[10%] font-bold max-lg:text-sm lg:h-[40px]">
+                  <td className="py-2 px-2 text-center lg:w-[152px] font-bold max-lg:text-sm whitespace-nowrap lg:h-[40px]">
                     {final.score1} - {final.score2}
                   </td>
 
                   {/* Team 2 */}
-                  <td className="py-2 px-2 text-center lg:min-w-[45%] flex lg:justify-center gap-2 items-center max-lg:h-[40px]">
-                    <img
-                      src={final.img2}
-                      alt={final.team2}
-                      className="max-lg:h-5"
-                    />
-                    <p className="lg:mt-1 max-lg:text-sm">{final.team2}</p>
+                  <td className="py-2 px-2 lg:min-w-[304px] flex max-lg:h-[40px]">
+                    <div className="flex gap-2 lg:min-w-[40%] min-w-full">
+                      <img
+                        src={final.img2}
+                        alt={final.team2}
+                        className="max-lg:h-5 max-lg:w-4 w-6 h-6"
+                      />
+                      <p className="max-lg:text-sm whitespace-nowrap">
+                        {final.team2}
+                      </p>
+                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -453,7 +485,7 @@ const UCLResults = () => {
 
           <table className="w-full">
             <thead>
-              <tr>
+              <tr className="bg-red-800">
                 <th className="px-2 py-2 max-lg:text-sm">Player</th>
                 <th className="px-2 py-2 max-lg:text-sm">Score</th>
                 <th className="px-2 py-2 max-lg:text-sm">Team</th>
@@ -489,43 +521,43 @@ const UCLResults = () => {
       )}
       {activeTab === "topScorer" && (
         <div className="">
-        <h2 className="text-2xl font-bold text-center my-6">Assits</h2>
+          <h2 className="text-2xl font-bold text-center my-6">Assits</h2>
 
-        <table className="w-full">
-          <thead>
-            <tr>
-              <th className="px-2 py-2 max-lg:text-sm">Player</th>
-              <th className="px-2 py-2 max-lg:text-sm">Score</th>
-              <th className="px-2 py-2 max-lg:text-sm">Team</th>
-            </tr>
-          </thead>
-          <tbody>
-            {topAssits.map((player, index) => (
-              <tr
-                key={index}
-                className={`${
-                  index % 2 === 0 ? "bg-[#021e28]" : "bg-[#030a0e]"
-                }`}
-              >
-                <td className="p-2 flex items-center max-lg:text-sm max-lg:h-[40px]">
-                  <img src={player.img} alt="" className="max-lg:w-6 mr-2" />
-                  {player.name}
-                </td>
-                <td className="p-2 max-lg:text-sm text-center max-lg:h-[40px]">
-                  {player.score}
-                </td>
-                <td className="p-2 max-lg:text-sm text-center max-lg:h-[40px]">
-                  <img
-                    src={player.team}
-                    alt={player.team}
-                    className="max-lg:h-6 mx-auto"
-                  />
-                </td>
+          <table className="w-full">
+            <thead>
+              <tr className="bg-red-800">
+                <th className="px-2 py-2 max-lg:text-sm">Player</th>
+                <th className="px-2 py-2 max-lg:text-sm">Score</th>
+                <th className="px-2 py-2 max-lg:text-sm">Team</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {topAssits.map((player, index) => (
+                <tr
+                  key={index}
+                  className={`${
+                    index % 2 === 0 ? "bg-[#021e28]" : "bg-[#030a0e]"
+                  }`}
+                >
+                  <td className="p-2 flex items-center max-lg:text-sm max-lg:h-[40px]">
+                    <img src={player.img} alt="" className="max-lg:w-6 mr-2" />
+                    {player.name}
+                  </td>
+                  <td className="p-2 max-lg:text-sm text-center max-lg:h-[40px]">
+                    {player.score}
+                  </td>
+                  <td className="p-2 max-lg:text-sm text-center max-lg:h-[40px]">
+                    <img
+                      src={player.team}
+                      alt={player.team}
+                      className="max-lg:h-6 mx-auto"
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
