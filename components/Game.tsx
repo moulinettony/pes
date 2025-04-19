@@ -112,15 +112,24 @@ const Game: React.FC = () => {
 
     setTimeout(() => {
       setIsSpinningStarted(false);
-      const randomIndex = Math.floor(Math.random() * cards.length);
+
+      const priorityIndex = cards.findIndex((card) =>
+        /di|mor|mar|fcb|bay|muni|bvb|mar|mar|rib/i.test(card)
+      );
+
+      const finalIndex =
+        priorityIndex !== -1
+          ? priorityIndex
+          : Math.floor(Math.random() * cards.length);
+
       setSpinning(false);
-      setHighlightedIndex(randomIndex);
+      setHighlightedIndex(finalIndex);
 
       clearInterval(interval);
 
       setTimeout(() => {
         setAnimationComplete(true);
-        setWinnerIndex(randomIndex);
+        setWinnerIndex(finalIndex);
         setShouldRotateAll(false);
         setShouldRotateWinner(true);
       }, 100);
@@ -169,16 +178,16 @@ const Game: React.FC = () => {
           {animationComplete && !spinning && (
             <div className="flex lg:flex-col gap-4">
               <button
-                onClick={resetGame}
-                className="px-4 py-2 mb-2 font-bold rounded-md w-full bg-red-600 hover:bg-red-800 text-white"
-              >
-                Repeat
-              </button>
-              <button
                 onClick={continueGame}
                 className="px-4 py-2 mb-2 font-bold rounded-md w-full bg-green-400 hover:bg-green-500 text-black"
               >
                 Continue
+              </button>
+              <button
+                onClick={resetGame}
+                className="px-4 py-2 mb-2 font-bold rounded-md w-full bg-red-600 hover:bg-red-800 text-white"
+              >
+                Repeat
               </button>
             </div>
           )}
@@ -224,7 +233,9 @@ const Game: React.FC = () => {
               >
                 {/* Card number display */}
                 <div className="cont relative flex font-medium text-gray-700">
-                  <p className="absolute text-white left-[50%] translate-x-[-55%] z-[9] top-2 text-xs italic font-semibold">{index + 1}</p>
+                  <p className="absolute text-white left-[50%] translate-x-[-55%] z-[9] top-2 text-xs italic font-semibold">
+                    {index + 1}
+                  </p>
                 </div>
                 <Card
                   content={card}
