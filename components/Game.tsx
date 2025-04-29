@@ -212,7 +212,7 @@ const Game: React.FC = () => {
                     winnerIndex === index && !spinning ? "fixed" : "relative",
                   top: winnerIndex === index && !spinning ? "50%" : "auto",
                   left: winnerIndex === index && !spinning ? "50%" : "auto",
-                  width: winnerIndex === index && !spinning ? "180px" : "auto",
+                  width: winnerIndex === index && !spinning ? "180px" : "azuto",
                   zIndex: winnerIndex === index && !spinning ? 50 : 1,
                   filter: `${
                     isSpinningStarted && highlightedIndex === index
@@ -228,7 +228,7 @@ const Game: React.FC = () => {
                 transition={{
                   type: "spring",
                   stiffness: 300,
-                  damping: 20,
+                  damping: 20, 
                 }}
               >
                 {/* Card number display */}
