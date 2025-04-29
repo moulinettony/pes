@@ -123,7 +123,7 @@ const Game: React.FC = () => {
       } else if (drawCount === 1) {
         currentPattern = /bay|di|muni/i; // 2nd draw pattern
       } else if (drawCount === 2) {
-        currentPattern = /sfo|psg/i; // 3rd draw pattern
+        currentPattern = /sfo|psg|za/i; // 3rd draw pattern
       } else if (drawCount === 3) {
         currentPattern = /soussi|fcb/i; // 4th draw pattern
       }
