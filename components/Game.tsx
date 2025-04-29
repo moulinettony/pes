@@ -17,6 +17,7 @@ const Game: React.FC = () => {
   const isAnyInputEmpty = cards.some((card) => card.trim() === "");
   const [shouldRotateAll, setShouldRotateAll] = useState(false); // Rotate all cards initially
   const [shouldRotateWinner, setShouldRotateWinner] = useState(false); // Rotate only the winner card at the end
+  const [drawCount, setDrawCount] = useState(0);
 
   useEffect(() => {
     // Initialize the originalCards state with the initial cards array
@@ -55,6 +56,7 @@ const Game: React.FC = () => {
 
   // Function to reset the game and start a new spin
   const resetGame = () => {
+    setDrawCount(0);
     setCards([...originalCards]); // Restore only the original set of cards
     setExcludedWinners([]); // Clear the excluded winners
     setShouldRotateAll(false);
@@ -113,8 +115,27 @@ const Game: React.FC = () => {
     setTimeout(() => {
       setIsSpinningStarted(false);
 
+      let currentPattern; // Declare currentPattern variable
+
+      // Set the pattern based on the draw count
+      if (drawCount === 0) {
+        currentPattern = /youssef|in|city|mad|al/i; // 1st draw pattern
+      } else if (drawCount === 1) {
+        currentPattern = /bay|di|muni/i; // 2nd draw pattern
+      } else if (drawCount === 2) {
+        currentPattern = /sfo|psg/i; // 3rd draw pattern
+      } else if (drawCount === 3) {
+        currentPattern = /soussi|fcb/i; // 4th draw pattern
+      }
+
+      // Check if a pattern was set, if not return early (this avoids issues if drawCount > 3)
+      if (!currentPattern) {
+        return; // Skip the rest of the code if no valid pattern is found
+      }
+
+      // Find the card that matches the current pattern
       const priorityIndex = cards.findIndex((card) =>
-        /di|mor|mar|fcb|bay|muni|bvb|mar|mar|rib/i.test(card)
+        currentPattern.test(card)
       );
 
       const finalIndex =
@@ -132,6 +153,9 @@ const Game: React.FC = () => {
         setWinnerIndex(finalIndex);
         setShouldRotateAll(false);
         setShouldRotateWinner(true);
+
+        // Increment the draw count for the next round
+        setDrawCount((prevCount) => prevCount + 1);
       }, 100);
     }, spinDuration);
   };
@@ -157,6 +181,7 @@ const Game: React.FC = () => {
         <h1 className="z-[1] text-4xl font-bold mb-8 text-white drop-shadow-[2px_2px_3px_black]">
           Picker Cards
         </h1>
+        <p className="text-white mb-8 z-[5]">Draw Count: {drawCount}</p>
         <div className="px-8 lg:pb-4 mb-6 w-full z-[1]">
           {/* Spin Button (Hidden after spin completes) */}
           {!animationComplete && (
@@ -212,7 +237,7 @@ const Game: React.FC = () => {
                     winnerIndex === index && !spinning ? "fixed" : "relative",
                   top: winnerIndex === index && !spinning ? "50%" : "auto",
                   left: winnerIndex === index && !spinning ? "50%" : "auto",
-                  width: winnerIndex === index && !spinning ? "180px" : "azuto",
+                  width: winnerIndex === index && !spinning ? "180px" : "auto",
                   zIndex: winnerIndex === index && !spinning ? 50 : 1,
                   filter: `${
                     isSpinningStarted && highlightedIndex === index
@@ -228,7 +253,7 @@ const Game: React.FC = () => {
                 transition={{
                   type: "spring",
                   stiffness: 300,
-                  damping: 20, 
+                  damping: 20,
                 }}
               >
                 {/* Card number display */}
